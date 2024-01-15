@@ -1,10 +1,11 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import LoginButton from "../components/LoginButton/LoginButton";
 import TrailButton from "../components/TrailButton/TrailButton";
 
-const navLinks = (
-	<div className="flex gap-8 text-[#919191] text-sm">
+const navLinksLg = (
+	<div className="flex gap-8 text-[#a3a3a5] text-sm">
 		<div>
 			<Link href="pricing">Pricing</Link>
 		</div>
@@ -16,14 +17,28 @@ const navLinks = (
 		</div>
 	</div>
 );
+const navLinksMd = (
+	<div className="flex gap-8 text-[#a3a3a5] text-sm">
+		<div>
+			<Link href="pricing">Pricing</Link>
+		</div>
+		<div>
+			<Link href="updates">Updates</Link>
+		</div>
+	</div>
+);
 
 const Navbar = () => {
+	const width = window.innerWidth;
+	useEffect(() => {
+		console.log(width);
+	}, [width]);
 	return (
-		<nav className="flex flex-col md:flex-row justify-between py-10 px-20">
-			<div className="flex gap-8 items-center">
-				<div>
+		<nav className="flex justify-between items-center py-9 px-10 lg:py-10 lg:px-20">
+			<div className="flex gap-2 items-center">
+				<div className="">
 					<svg
-						width="18"
+						width="100%"
 						height="29"
 						viewBox="0 0 18 29"
 						fill="none"
@@ -36,13 +51,19 @@ const Navbar = () => {
 							fill="white"
 						></path>
 					</svg>
-				</div>
-				<div>{navLinks}</div>
+                </div>
+                <div>
+                    <h2 className="font-bold text-white">FEY</h2>
+                </div>
 			</div>
-            <div className="flex gap-8 items-center text-sm font-medium">
-                <LoginButton></LoginButton>
-                <TrailButton></TrailButton>
-            </div>
+			<div className="">
+				<div className="hidden lg:flex">{navLinksLg}</div>
+				<div className="flex lg:hidden">{navLinksMd}</div>
+			</div>
+			<div className="border hidden md:hidden lg:flex gap-8 items-center text-sm font-medium">
+				<LoginButton></LoginButton>
+				<TrailButton></TrailButton>
+			</div>
 		</nav>
 	);
 };

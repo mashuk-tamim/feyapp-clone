@@ -10,7 +10,7 @@ const TrailButton = () => {
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
-					className="border rounded-full border-[#868F97]"
+					className="border rounded-full border-gray"
 				>
 					<path
 						stroke="#868F97"
