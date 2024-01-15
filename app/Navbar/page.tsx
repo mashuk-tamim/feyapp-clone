@@ -34,7 +34,7 @@ const Navbar = () => {
 		console.log(width);
 	}, [width]);
 	return (
-		<nav className="flex justify-between items-center py-9 px-10 lg:py-10 lg:px-20">
+		<nav className="flex justify-between items-center p-8 md:p-10 lg:py-10 lg:px-20 border">
 			<div className="flex gap-2 items-center">
 				<div className="">
 					<svg
