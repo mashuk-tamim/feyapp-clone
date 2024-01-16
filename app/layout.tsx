@@ -17,7 +17,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className="box-border">
             <body className={inter.className}>
                 <Navbar></Navbar>
                 {children}

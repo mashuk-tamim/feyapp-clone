@@ -3,10 +3,10 @@ import React from 'react';
 const TrailButton = () => {
     return (
 		<div>
-			<button className="border border-gray-600 rounded-full px-4 py-2 text-white flex gap-2 items-center">
+			<button className="select-none border border-[#45494b] rounded-full px-3 py-1 text-[10px] text-white font flex gap-2 items-center bg-[#121212]">
 				<svg
-					width="18"
-					height="18"
+					width="14"
+					height="14"
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"

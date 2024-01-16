@@ -7,7 +7,7 @@ const text =
     "Access ad-free, uninterrupted data directly from trusted sources. With our zero-delay market updates, you'll always stay ahead of the curve";
 const page = () => {
     return (
-		<div>
+		<section className='px-5 md:px-0'>
 			<div>
 				<ComponentTitle title={title} text={text}></ComponentTitle>
 			</div>
@@ -15,7 +15,7 @@ const page = () => {
                 <Image src={liveSync} alt="liveSync" className=""></Image>
                 <div className='w-full h-full bg-radial-gradient absolute top-0 left-0'></div>
             </div>
-		</div>
+		</section>
 	);
 };
 

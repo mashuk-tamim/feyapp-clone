@@ -11,7 +11,7 @@ const text =
 
 const page = () => {
 	return (
-		<div className="space-y-20">
+		<section className="px-5 md:px-20 space-y-20">
 			<div>
 				<ComponentTitle title={title} text={text} />
 			</div>
@@ -28,7 +28,7 @@ const page = () => {
 					className="absolute -top-3 left-0 border"
 				></Image>
 			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -4,7 +4,7 @@ import React from 'react';
 const LoginButton = () => {
     return (
 		<div>
-			<button className="flex gap-2 items-center">
+			<button className="flex gap-2 items-center text-[10px] font-bold">
 				<svg
 					width="18"
 					height="18"

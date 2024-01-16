@@ -1,6 +1,7 @@
 import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
 import React from "react";
-import watchlist from "@/public/images/watchlist_4x.f3cfae5a.png";
+import watchList from "@/public/images/watchlist_4x.f3cfae5a.png";
+import watchList2 from "@/public/images/macbook-positions_4x.434c9984.png";
 import research from "@/public/images/canvas-mobile_4x.596d91632222.png";
 import Image from "next/image";
 
@@ -10,15 +11,15 @@ const text =
 
 const page = () => {
 	return (
-		<section className="pl-16">
+		<section className="px-5 md:px-20 lg:pl-16">
 			<div className="space-y-20">
 				<div className="">
 					<ComponentTitle title={title} text={text}></ComponentTitle>
 				</div>
 				<div>
-					<div className="flex h-[320px]">
-						<div className="w-[40%]">
-							<p className="text-gray font-bold p-10 sticky top-[35%]">
+					<div className="flex flex-col lg:flex-row md:h-auto lg:h-[320px]">
+						<div className="md:w-full lg:w-[40%]">
+							<p className="text-gray font-bold p-10 lg:sticky lg:top-[35%]">
 								<span className="text-white">
 									Track your stocks
 								</span>{" "}
@@ -28,19 +29,24 @@ const page = () => {
 								dates and performance indicators.
 							</p>
 						</div>
-						<div className="w-[60%] relative">
+						<div className="w-full lg:w-[60%] lg:relative ">
 							<Image
-								src={watchlist}
+								src={watchList}
 								alt="charts image"
-								className="absolute object-cover object-left w-full h-full round"
+								className="hidden lg:flex absolute object-cover object-left w-full h-full"
 							></Image>
-							<div className="bg-gradient-to-l from-black absolute h-full w-full  object-cover"></div>
+							<Image
+								src={watchList2}
+								alt="charts image 2"
+								className="w-4/5 mx-auto h-full"
+							></Image>
+							<div className="hidden lg:flex bg-gradient-to-l from-black absolute h-full w-full  object-cover"></div>
 						</div>
 					</div>
 				</div>
-				<div className="flex h-[130vh] pt-20">
-					<div className="w-[40%]">
-						<p className="text-gray font-bold p-10 sticky top-[35%]">
+				<div className="flex flex-col lg:flex-row md:h-auto lg:h-[130vh] pt-0 lg:pt-20">
+					<div className="md:w-full lg:w-[40%]">
+						<p className="text-gray font-bold p-10 lg:sticky lg:top-[35%]">
 							<span className="text-white">Research</span> is all
 							about quality of data and accuracy. Unlike most
 							financial apps, our asset pages are carefully
@@ -52,13 +58,18 @@ const page = () => {
 							</span>
 						</p>
 					</div>
-					<div className="w-[60%] relative">
+					<div className="w-full lg:w-[60%] lg:relative space-y-10">
 						<Image
 							src={research}
 							alt="charts image"
-							className="absolute object-cover object-left w-full h-full round"
+							className="static lg:absolute lg:object-cover lg:object-left w-4/5 mx-auto lg:w-full h-full round"
 						></Image>
-						<div className="bg-gradient-to-tl from-black from-[-20%] absolute h-full w-full  object-cover"></div>
+						<Image
+							src={watchList2}
+							alt="charts image 2"
+							className="w-4/5 mx-auto h-full"
+						></Image>
+						<div className="hidden lg:flex bg-gradient-to-tl from-black from-[-20%] absolute h-full w-full  object-cover"></div>
 					</div>
 				</div>
 			</div>

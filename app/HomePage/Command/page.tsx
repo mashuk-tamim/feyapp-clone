@@ -7,13 +7,13 @@ import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
 
 const Search = () => {
 	return (
-		<section className="px-16 space-y-32 bg-[#0e0e13]">
+		<section className="p-5 md:p-24 space-y-6 md:space-y-32 bg-[#0e0e13] overflow-hidden">
 			<div>
-				<div className="flex">
-					<h2 className="text-3xl font-bold bg-headline-gradient inline-block text-transparent bg-clip-text w-[55%]">
+				<div className="flex flex-col lg:flex-row md:gap-5 lg:gap-20">
+					<h2 className="text-4xl font-bold bg-headline-gradient inline-block text-transparent bg-clip-text w-full lg:w-[55%]">
 						Always at your command.
 					</h2>
-					<p className="text-gray font-semibold w-[45%]">
+					<p className="text-gray font-bold w-full md:w-[90%] lg:w-[45%] mt-5 md:mt-0">
 						The Fey Command lets you have full control at your
 						fingertips. Manage your portfolio, view transactions and
 						execute real-time orders in seconds, all without ever
@@ -21,8 +21,8 @@ const Search = () => {
 					</p>
 				</div>
 			</div>
-			<div className="flex">
-				<div className="relative w-[60%]">
+			<div className="w-screen">
+				<div className="relative scale-150 md:scale-125 lg:scale-100 lg:w-4/5 left-[93px] lg:left-0 md:right-32 lg:right-0">
 					<Image
 						src={keyboard}
 						alt="keyboard"
@@ -34,22 +34,22 @@ const Search = () => {
 						className="absolute top-0 left-0"
 					></Image>
 				</div>
-				<div className="w-[40%] h-[300px] bg-black border">
+				<div className="w-[350px] md:w-[300px] lg:w-[400px] h-[300px] md:h-[280px] lg:h-[350px] bg-black relative top-0 left-20 md:left-[408px] lg:left-[680px] border overflow-hidden">
 					<div className="p-7 border-b border-gray-950 space-y-7">
-						<div className="flex gap-3">
+						<div className="flex items-center gap-1">
 							<Image
 								src={apple}
 								alt=""
-								className="size-6 border-[#000000] rounded-md p-1"
+								className="size-4 border-[#000000] rounded-md p-1"
 							></Image>
-							<p className="text-gray text-xs font-bold bg-[#1a1b20] py-1 px-3 rounded-sm">
+							<div className="text-gray text-[6px] font-bold bg-[#1a1b20] rounded-sm">
 								AAPL:<span className="font-medium">NASDAQ</span>
-							</p>
+							</div>
 						</div>
 						<div className="">
 							<input
 								type="text"
-								className="bg-black caret-[#479ffa] focus:outline-none text-xl font-medium"
+								className="bg-black caret-[#479ffa] focus:outline-none text-lg font-medium"
 								defaultValue="search"
 							/>
 						</div>

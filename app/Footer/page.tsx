@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const footerLinks = (
-	<div className="flex gap-8">
+	<div className="flex gap-3 lg:gap-8 justify-center">
 		<div>
 			<Link href="pricing">Pricing</Link>
 		</div>
@@ -23,7 +23,7 @@ const footerLinks = (
 
 const page = () => {
     return (
-		<footer className="text-[#676e75] text-xs font-medium flex justify-between px-20 py-10 bg-blueLight">
+		<footer className="w-full mx-auto text-[#676e75] text-[10px] lg:text-xs font-medium flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-5 lg:px-20 py-10 bg-blueLight">
 			<div>
 				<p>&#169; 2024, Fey Labs Inc.</p>
 			</div>
