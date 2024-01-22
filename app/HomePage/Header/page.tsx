@@ -1,46 +1,165 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll } from "framer-motion";
-import React, { useRef } from "react";
+import {
+	motion,
+	useScroll,
+	useCycle,
+	Variants,
+	useMotionValueEvent,
+	useAnimation,
+	useInView,
+    useTransform,
+} from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import bannerLaptop from "@/public/images/macbook_4x.299ca224.jpg";
 import laptopWallpaper from "@/public/images/screen-1_4x.5ab54123cropped.jpg";
 import bannerStats from "@/public/images/home-UI_4x.d5c9876e.png";
 import bannerStats2 from "@/public/images/canvas-UI_4x.0ca19cc7.png";
-import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
+import Svg from "@/app/components/Svgs/Svg";
 
 const title = "Immerse yourself";
 const text =
 	"Dive into financial, estimates, and more. All meticulously sourced from the titans of the industry, packed within a beautiful interface.";
+// const duration = 1.5;
+// const variants = {
+// 	flip: {
+// 		rotateX: 0,
+// 		scale: 0.5,
+// 		y: 0,
+// 		transition: {
+// 			ease: "easeInOut",
+// 			duration,
+// 			rotateY: {
+// 				delay: duration,
+// 				duration,
+// 			},
+// 		},
+// 	},
+// 	hidden: {
+// 		rotateX: -50,
+// 		scale: 1,
+// 		y: 0,
+// 		transition: {
+// 			ease: "easeInOut",
+// 			duration,
+// 			rotateY: {
+// 				delay: duration,
+// 				duration,
+// 			},
+// 		},
+// 	},
+// };
 
 const Header = () => {
+	// const [variant, toggleVariant] = useCycle(...Object.keys(variants));
+    // const [replace, setReplace] = useState(false);
+    
+
 	const ref = useRef(null);
-	const { scrollYProgress } = useScroll({
-		target: ref,
-		offset: ["0 1", "1.33 1"],
+	const scrollRef = useRef(null);
+    const imageRef = useRef<HTMLDivElement | null>(null);
+
+    const { scrollYProgress } = useScroll({
+		target: imageRef,
+		offset: ["1 1", "0 0.7"],
 	});
+	const rotateXProgress = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -50]);
+	const scaleProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.5]);
+    
+	// useMotionValueEvent(scrollY, "change", (latest) => {
+	// 	console.log(latest);
+	// });
+
+
+	const heading1Variant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 0,
+				duration: 1,
+			},
+		},
+	};
+	const heading2Variant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 1,
+				duration: 2,
+			},
+		},
+	};
+	const imageVariant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 0.5,
+				duration: 3,
+			},
+		},
+	};
+
+	// useEffect(() => {
+	// 	console.log(scrollRef.current);
+	// }, [scrollRef]);
+
 	return (
 		<section className="bg-blueLight">
-			<div className="flex flex-col justify-center items-center space-y-7 md:w-4/5 lg:w-3/5 mx-auto text-center">
-				<h3 className="uppercase bg-headline-gradient2 lg:inline-block text-transparent bg-clip-text font-semibold hidden">
+			<div className="flex flex-col justify-center items-center space-y-5 md:w-4/5 lg:w-3/5 mx-auto text-center pt-4">
+				<motion.h3
+					className="uppercase bg-headline-gradient2 lg:inline-block text-transparent bg-clip-text font-semibold hidden text-sm"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
 					Now Available to Everyone
-				</h3>
-				<h3 className="uppercase bg-headline-gradient2 inline-block text-transparent bg-clip-text font-semibold md:hidden">
+				</motion.h3>
+				<motion.h3
+					className="uppercase bg-headline-gradient2 inline-block text-transparent bg-clip-text font-semibold md:hidden"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
 					Available Now
-				</h3>
-				<h1 className="text-4xl font-bold md:w-[80%]">
+				</motion.h3>
+				<motion.h1
+					className="text-3xl font-bold md:w-[75%]"
+					variants={heading1Variant}
+					animate="visible"
+					initial="hidden"
+				>
 					The definitive research tool for the modern investor.
-				</h1>
-				<h4 className="text-gray text-xs font-bold hidden lg:flex">
+				</motion.h1>
+				<motion.h4
+					className="text-gray text-xs font-bold hidden lg:flex items-center"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
 					Press{" "}
-					<span className="bg-[#26272f] font-light text-white px-1 py-[1px] rounded-[4px] border border-[#32333a]">
+					<span className="bg-[#26272f] font-light text-white px-1 mx-1 py-[1px] rounded-[4px] border border-[#32333a]">
 						T
 					</span>{" "}
 					anytime to start trail
-				</h4>
-				<button className="bg-[#17171b] px-10 py-3 rounded-full font-bold hover:bg-[#1e1e22] flex lg:hidden">
+				</motion.h4>
+				<motion.button
+					className="bg-[#17171b] px-10 py-3 rounded-full font-bold hover:bg-[#1e1e22] flex lg:hidden"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
 					Start your free trail
-				</button>
+				</motion.button>
 			</div>
 
 			{/* <Image
@@ -53,46 +172,54 @@ const Header = () => {
 					perspective: 2000,
 					margin: "auto",
 				}}
-				className="relative w-[320px] md:w-[500px] lg:w-[750px] mx-auto"
+				className="relative w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-10"
+				variants={imageVariant}
+				animate="visible"
+				initial="hidden"
 			>
+				{/* laptop image */}
 				<Image
 					src={bannerLaptop}
 					alt="banner image"
 					className=""
 				></Image>
+
+				{/* stat image 1 */}
 				<motion.div
-					style={{
-						// transform: "rotateX(-70deg)",
-						transformOrigin: "center center",
-					}}
-					className=" border-yellow-600 left-0 z-10 flex justify-center transform"
+					ref={imageRef}
+                    style={{
+                        rotateX: rotateXProgress,
+                        // scale: scaleProgress
+                    }}
+					// onTap={() => toggleVariant()}
+					className="flex flex-col h-[1300px] md:h-[1700px] lg:h-[1000px]"
 				>
 					<Image
+						// style={{
+						// 	transform: "rotateX(-70deg)",
+						// 	transformOrigin: "center center",
+						// }}
 						src={bannerStats}
 						alt="banner image"
-						className="mx-auto rounded-t-lg"
+						className="rounded-t-lg aspect-auto sticky top-32 h-[200px] md:h-[314px] lg:h-[430px] border"
 					></Image>
+					{/* stat image 2 */}
 				</motion.div>
-
-				{/* <div className="[perspective:2000px]">
-					<div className="[transform:rotateX(-25deg)]">
-						<motion.img
-							src="https://i.ibb.co/fMHZhPC/home-UI-4x-d5c9876e.png"
-							alt="banner image"
-							className="md:w-[calc(60%-10px)] lg:w-[calc(60%-10px)] mx-auto relative mt-5"
-						></motion.img>
-					</div>
-				</div> */}
+			</motion.div>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-10">
 				<Image
 					src={bannerStats2}
 					alt="banner image"
-					className="mx-auto mt-5"
+					className="hidden mx-auto mt-5 z-10 bottom-0 border"
 				></Image>
-			</motion.div>
+			</div>
 			<div className="text-center">
 				<h1 className="text-3xl font-bold">{title}</h1>
-				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">{text}</p>
+				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
+					{text}
+				</p>
 			</div>
+			<Svg></Svg>
 		</section>
 	);
 };

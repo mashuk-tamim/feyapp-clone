@@ -5,6 +5,7 @@ import Everything from './HomePage/Everything/page'
 import Expand from './HomePage/Expand/page'
 import RealTime from './HomePage/RealTime/page'
 import WholeNew from './HomePage/WholeNew/page'
+import Demo from './HomePage/Demo/page'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <Expand></Expand>
           <RealTime></RealTime>
           <WholeNew></WholeNew>
+          <Demo></Demo>
     </main>
   )
 }

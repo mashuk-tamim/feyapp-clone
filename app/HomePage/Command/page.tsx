@@ -1,12 +1,22 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import keyboard from "@/public/images/keyboard_4x.fac19d71.jpg";
 import keys from "@/public/images/keyboard-keys_4x.d1cec86a.png";
 import apple from "@/public/images/pngegg.png";
 import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
 
 const Search = () => {
-	return (
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    useLayoutEffect(() => {
+		// Focus on the input element after the component has mounted
+		if (inputRef.current) {
+            const length = inputRef.current.value.length;
+            // inputRef.current.focus();
+			inputRef.current.setSelectionRange(length, length);
+		}
+	}, []);
+    return (
 		<section className="p-5 md:p-24 space-y-6 md:space-y-32 bg-[#0e0e13] overflow-hidden">
 			<div>
 				<div className="flex flex-col lg:flex-row md:gap-5 lg:gap-20">
@@ -47,7 +57,8 @@ const Search = () => {
 							</div>
 						</div>
 						<div className="">
-							<input
+                            <input
+                                ref={inputRef}
 								type="text"
 								className="bg-black caret-[#479ffa] focus:outline-none text-lg font-medium"
 								defaultValue="search"
