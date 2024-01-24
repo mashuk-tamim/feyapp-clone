@@ -53,24 +53,40 @@ const text =
 
 const Header = () => {
 	// const [variant, toggleVariant] = useCycle(...Object.keys(variants));
-    // const [replace, setReplace] = useState(false);
-    
+	const [replace, setReplace] = useState(false);
 
-	const ref = useRef(null);
-	const scrollRef = useRef(null);
-    const imageRef = useRef<HTMLDivElement | null>(null);
+	const containerRef = useRef(null);
+	// const scrollRef = useRef(null);
+	const imageRef = useRef<HTMLDivElement | null>(null);
 
-    const { scrollYProgress } = useScroll({
+	const { scrollYProgress: scrollYProgress1 } = useScroll({
 		target: imageRef,
-		offset: ["1 1", "0 0.7"],
+		offset: ["1 0.6", "0 0.5"],
 	});
-	const rotateXProgress = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, -50]);
-	const scaleProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.5]);
-    
-	// useMotionValueEvent(scrollY, "change", (latest) => {
-	// 	console.log(latest);
-	// });
 
+	const { scrollYProgress: scrollYProgress2 } = useScroll({
+		target: containerRef,
+		offset: ["0 1", "1 1"],
+	});
+
+	console.log(scrollYProgress2.get()); // Log the numeric value
+
+	
+
+	const rotateXProgress = useTransform(
+		scrollYProgress1,
+		[0, 0, 1],
+		[0, 0, -70]
+	);
+
+	useMotionValueEvent(scrollYProgress2, "change", (latest) => {
+        console.log(latest, replace);
+        if (scrollYProgress2.get() === 1) {
+			setReplace(true);
+		} else {
+			setReplace(false);
+		}
+	});
 
 	const heading1Variant = {
 		hidden: {
@@ -108,10 +124,6 @@ const Header = () => {
 			},
 		},
 	};
-
-	// useEffect(() => {
-	// 	console.log(scrollRef.current);
-	// }, [scrollRef]);
 
 	return (
 		<section className="bg-blueLight">
@@ -172,6 +184,7 @@ const Header = () => {
 					perspective: 2000,
 					margin: "auto",
 				}}
+				ref={imageRef}
 				className="relative w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-10"
 				variants={imageVariant}
 				animate="visible"
@@ -181,38 +194,36 @@ const Header = () => {
 				<Image
 					src={bannerLaptop}
 					alt="banner image"
-					className=""
+					className="relative"
 				></Image>
 
 				{/* stat image 1 */}
 				<motion.div
-					ref={imageRef}
-                    style={{
-                        rotateX: rotateXProgress,
-                        // scale: scaleProgress
-                    }}
+					style={{
+						rotateX: rotateXProgress,
+						transformOrigin: "top",
+					}}
+					ref={containerRef}
 					// onTap={() => toggleVariant()}
-					className="flex flex-col h-[1300px] md:h-[1700px] lg:h-[1000px]"
+					className="h-[1300px] md:h-[1700px] lg:h-[1400px] absolute top-[48px] px-2 mx-auto "
 				>
-					<Image
-						// style={{
-						// 	transform: "rotateX(-70deg)",
-						// 	transformOrigin: "center center",
-						// }}
-						src={bannerStats}
-						alt="banner image"
-						className="rounded-t-lg aspect-auto sticky top-32 h-[200px] md:h-[314px] lg:h-[430px] border"
-					></Image>
+					<div className="sticky top-[200px]">
+						<Image
+							src={bannerStats}
+							alt="banner image"
+							className={`rounded-t-lg aspect-auto h-[200px] md:h-[314px] lg:h-[430px] ${replace ? "hidden" : "flex"}`}
+						></Image>
+						<Image
+							src={bannerStats2}
+							alt="banner image"
+							className={`${replace ? "flex" : "hidden"} mx-auto mt-5 z-10 bottom-0 border`}
+						></Image>
+					</div>
 					{/* stat image 2 */}
 				</motion.div>
 			</motion.div>
-			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-10">
-				<Image
-					src={bannerStats2}
-					alt="banner image"
-					className="hidden mx-auto mt-5 z-10 bottom-0 border"
-				></Image>
-			</div>
+			<div className="h-[1300px] md:h-[1700px] lg:h-[1000px]"></div>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-10"></div>
 			<div className="text-center">
 				<h1 className="text-3xl font-bold">{title}</h1>
 				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
