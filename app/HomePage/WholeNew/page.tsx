@@ -1,12 +1,16 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import macClosed from "@/public/images/laptop-closed-off_4x.434654c4-PhotoRoom.png";
+import React, { useEffect, useRef, useState } from "react";
+import macClosedOff from "@/public/images/laptop-closed-off_4x.434654c4-PhotoRoom.png";
+import macClosedOn from "@/public/images/laptop-closed-on_4x.06eb6128.jpg";
 import macLogoNotHovered from "@/public/images/apple-unhovered_4x.f4daffa8.png";
 import macLogoHovered from "@/public/images/apple-hovered_4x.981e3b1f.png";
 const page = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: false });
+    console.log(isInView);
 
 	const handleMouseEnter = () => {
 		setIsHovered(true);
@@ -45,9 +49,9 @@ const page = () => {
 					Try it free
 				</motion.button>
 			</div>
-			<div className="relative mt-32 w-[80%] mx-auto">
+			<div ref={ref} className="relative mt-32 w-[80%] mx-auto">
 				<Image
-					src={macClosed}
+					src={macClosedOff}
 					alt="mac closed"
 					className="border"
 				></Image>
@@ -59,8 +63,22 @@ const page = () => {
 				<Image
 					src={macLogoHovered}
 					alt="hovered mac"
-					className={`${isHovered ? "flex": "hidden"} absolute top-0 left-0`}
-                ></Image>
+					className={`${
+						isHovered ? "flex" : "hidden"
+					} absolute top-0 left-0`}
+				></Image>
+				<div>
+					<Image
+						src={macClosedOn}
+						alt="hovered mac"
+						className={`absolute top-0 left-0`}
+						style={{
+							opacity: isInView ? "1" : "0",
+							transition: "ease-in-out 1s",
+							transitionDelay: "0.5s",
+						}}
+					></Image>
+				</div>
 			</div>
 		</section>
 	);

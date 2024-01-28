@@ -11,9 +11,9 @@ const page = () => {
     const ref = useRef<HTMLImageElement | null>(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,
-		offset: ["end end", "start start"],
+		offset: ["center end", "end start"],
 	});
-	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
+	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
     return (
 		<section className="px-5 md:px-0">
 			<div>
@@ -23,7 +23,7 @@ const page = () => {
 				className="w-[85%] mx-auto bg-radial-gradient relative"
 				ref={ref}
 				style={{
-					opacity,
+					opacity: opacity
 				}}
 			>
 				<Image src={liveSync} alt="liveSync" className=""></Image>

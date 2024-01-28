@@ -8,7 +8,7 @@ const ComponentTitle = ({ title, text }) => {
 		target: ref,
 		offset: ["end end", "start start"],
 	});
-	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
+	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 	return (
 		<motion.div
 			ref={ref}
