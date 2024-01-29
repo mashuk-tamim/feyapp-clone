@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import bannerLaptop from "@/public/images/macbook_4x.299ca224.jpg";
+import laptopWallpaper from "@/public/images/screen-1_4x.5ab54123cropped.jpg";
 import bannerStats from "@/public/images/home-UI_4x.d5c9876e.png";
 import bannerStats2 from "@/public/images/canvas-UI_4x.0ca19cc7.png";
 import Image from "next/image";
@@ -38,7 +39,7 @@ const HeaderImage = () => {
 	const rotateXProgress = useTransform(
 		scrollYProgress1,
 		[0, 0, 1],
-		[0, 0, -64]
+		[0, 0, -72]
 	);
 
 	useMotionValueEvent(scrollYProgress2, "change", (latest) => {
@@ -87,19 +88,23 @@ const HeaderImage = () => {
 					alt="banner image"
 					className="relative"
 					priority
-				></Image>
+                ></Image>
+                <Image src={laptopWallpaper} alt="wallpaper" className="absolute top-[48px]" style={{
+                    transform: "rotateX(20deg)",
+                    transformOrigin: "top"
+                }} priority ></Image>
 
-				{/* stat image 1 */}
 				<motion.div
 					style={{
-						rotateX: rotateXProgress,
+                        rotateX: rotateXProgress,
 						transformOrigin: "top",
 					}}
 					ref={containerRef}
 					className="h-[1300px] md:h-[1700px] lg:h-[1400px] absolute top-[48px] px-1 mx-auto   border-red-500"
-				>
+                    >
 					<div className="sticky top-[200px]">
 						<motion.div>
+                            {/* stat image 1 */}
 							<Image
 								src={bannerStats}
 								alt="banner image"
