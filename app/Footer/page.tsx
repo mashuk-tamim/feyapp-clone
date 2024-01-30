@@ -4,19 +4,29 @@ import React from 'react';
 const footerLinks = (
 	<div className="flex gap-3 lg:gap-8 justify-center">
 		<div>
-			<Link href="pricing">Pricing</Link>
+			<Link href="pricing" className="hover:text-[#e6e6e6]">
+				Pricing
+			</Link>
 		</div>
 		<div>
-			<Link href="updates">Updates</Link>
+			<Link href="updates" className="hover:text-[#e6e6e6]">
+				Updates
+			</Link>
 		</div>
 		<div>
-			<Link href="download">Download</Link>
+			<Link href="download" className="hover:text-[#e6e6e6]">
+				Download
+			</Link>
 		</div>
 		<div>
-			<Link href="privacyPolicy">Privacy Policy</Link>
+			<Link href="privacyPolicy" className="hover:text-[#e6e6e6]">
+				Privacy Policy
+			</Link>
 		</div>
 		<div>
-			<Link href="terms">Terms of Use</Link>
+			<Link href="terms" className="hover:text-[#e6e6e6]">
+				Terms of Use
+			</Link>
 		</div>
 	</div>
 );

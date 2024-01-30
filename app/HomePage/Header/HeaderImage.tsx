@@ -31,15 +31,10 @@ const HeaderImage = () => {
 		offset: ["0 1", "1 1"],
 	});
 
-	const windowWidth = window.innerWidth;
-	useEffect(() => {
-		console.log(windowWidth);
-	}, [windowWidth]);
-
 	const rotateXProgress = useTransform(
 		scrollYProgress1,
 		[0, 0, 1],
-		[0, 0, -72]
+		[0, 0, -78]
 	);
 
 	useMotionValueEvent(scrollYProgress2, "change", (latest) => {
@@ -70,7 +65,6 @@ const HeaderImage = () => {
 	};
 	return (
 		<div className="">
-			<h1 className="text-2xl text-center">{windowWidth}</h1>
 			<motion.div
 				style={{
 					perspective: 2000,
