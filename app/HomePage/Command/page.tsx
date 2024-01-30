@@ -86,7 +86,7 @@ const Search = () => {
 							></Image>
 						</div>
 						<div className="w-[350px] md:w-[300px] lg:w-[400px] h-[300px] md:h-[280px] lg:h-[350px] bg-black relative top-0 left-20 md:left-[408px] lg:left-[680px] overflow-hidden drop-shadow-xl shadow-2xl shadow-black">
-							<div className="p-7 border-b border-gray-950 space-y-4">
+							<div className="p-7 border-b border-[#202020] space-y-4">
 								<div className="flex items-center gap-1">
 									<Image
 										src={apple}

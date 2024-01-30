@@ -7,17 +7,17 @@ import macClosedOn from "@/public/images/laptop-closed-on_4x.06eb6128.jpg";
 import macLogoNotHovered from "@/public/images/apple-unhovered_4x.f4daffa8.png";
 import macLogoHovered from "@/public/images/apple-hovered_4x.981e3b1f.png";
 const page = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: false });
-    console.log(isInView);
+	const [isHovered, setIsHovered] = useState(false);
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: false });
+	console.log(isInView);
 
 	const handleMouseEnter = () => {
 		setIsHovered(true);
 	};
 	const handleMouseLeave = () => {
 		setIsHovered(false);
-    };
+	};
 	return (
 		<section className="bg-blueLight pt-40">
 			<div className="flex flex-col items-center justify-center">
@@ -58,27 +58,26 @@ const page = () => {
 				<Image
 					src={macLogoNotHovered}
 					alt="not hovered mac"
-					className="absolute top-0 left-0"
+					className="absolute top-0 left-0 z-10"
 				></Image>
 				<Image
 					src={macLogoHovered}
 					alt="hovered mac"
 					className={`${
 						isHovered ? "flex" : "hidden"
-					} absolute top-0 left-0`}
+					} absolute top-0 left-0 z-20`}
 				></Image>
-				<div>
-					<Image
-						src={macClosedOn}
-						alt="hovered mac"
-						className={`absolute top-0 left-0`}
-						style={{
-							opacity: isInView ? "1" : "0",
-							transition: "ease-in-out 1s",
-							transitionDelay: "0.5s",
-						}}
-					></Image>
-				</div>
+				<Image
+					src={macClosedOn}
+					alt="hovered mac"
+					className={`absolute top-0 left-0 z-0`}
+					style={{
+						opacity: isInView ? "1" : "0",
+						transition: "ease-in-out 1s",
+						transitionDelay: "0.5s",
+					}}
+				></Image>
+				<div></div>
 			</div>
 		</section>
 	);
