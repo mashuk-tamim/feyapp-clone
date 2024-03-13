@@ -6,7 +6,7 @@ import keys from "@/public/images/keyboard-keys_4x.d1cec86a.png";
 import apple from "@/public/images/pngEgg.png";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
-const Search = () => {
+const Page = () => {
 	const [prevValue, setPrevValue] = useState(0);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -118,4 +118,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default Page;

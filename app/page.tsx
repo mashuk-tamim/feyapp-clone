@@ -1,8 +1,8 @@
 "use client";
 import Header from "./HomePage/Header/page";
 import Expand from "./HomePage/Expand/page";
-import Command from "./HomePage/Command/Page";
-import Everything from "./HomePage/Everything/Page";
+import Command from "./HomePage/Command/page";
+import Everything from "./HomePage/Everything/page";
 import RealTime from "./HomePage/RealTime/page";
 import WholeNew from "./HomePage/WholeNew/page";
 import Lenis from "@studio-freight/lenis";
