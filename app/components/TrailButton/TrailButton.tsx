@@ -80,7 +80,7 @@ const TrailButton = () => {
 						cy="12"
 						r="11"
 						stroke="#868F97"
-						stroke-width="1.5"
+						strokeWidth="1.5"
 					></motion.circle>
 				</motion.svg>
 				Start your trail

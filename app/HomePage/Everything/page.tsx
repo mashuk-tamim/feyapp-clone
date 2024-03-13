@@ -12,7 +12,7 @@ const title = "Everything, unlike anything.";
 const text =
 	"Whether you're an armchair investor or a Wall Street aficionado, Fey is designed to keep you informed with real-time market data and advanced analysis tools.";
 
-const page = () => {
+const Page = () => {
 	const pageRef1 = useRef<HTMLDivElement | null>(null);
 	const pageRef2 = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress: scrollYProgress1 } = useScroll({
@@ -106,4 +106,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;

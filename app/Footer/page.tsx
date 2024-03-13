@@ -31,7 +31,7 @@ const footerLinks = (
 	</div>
 );
 
-const page = () => {
+const Page = () => {
     return (
 		<footer className="w-full mx-auto text-[#676e75] text-[10px] lg:text-xs font-medium flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-5 lg:px-20 py-10 bg-blueLight">
 			<div>
@@ -42,4 +42,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;

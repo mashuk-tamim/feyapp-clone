@@ -6,11 +6,11 @@ import macClosedOff from "@/public/images/laptop-closed-off_4x.434654c4-PhotoRoo
 import macClosedOn from "@/public/images/laptop-closed-on_4x.06eb6128.jpg";
 import macLogoNotHovered from "@/public/images/apple-unhovered_4x.f4daffa8.png";
 import macLogoHovered from "@/public/images/apple-hovered_4x.981e3b1f.png";
-const page = () => {
+const Page = () => {
 	const [isHovered, setIsHovered] = useState(false);
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: false });
-	console.log(isInView);
+	// console.log(isInView);
 
 	const handleMouseEnter = () => {
 		setIsHovered(true);
@@ -82,4 +82,4 @@ const page = () => {
 		</section>
 	);
 };
-export default page;
+export default Page;

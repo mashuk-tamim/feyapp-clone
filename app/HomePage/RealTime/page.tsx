@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform,useInView } from "framer-motion";
 const title = "Real-time data";
 const text =
     "Access ad-free, uninterrupted data directly from trusted sources. With our zero-delay market updates, you'll always stay ahead of the curve";
-const page = () => {
+const Page = () => {
     const ref = useRef<HTMLImageElement | null>(null);
     const isInView = useInView(ref, { once: false });
 	const { scrollYProgress } = useScroll({
@@ -38,4 +38,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;

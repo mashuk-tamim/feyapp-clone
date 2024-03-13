@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import keyboard from "@/public/images/keyboard_4x.fac19d71.jpg";
 import keys from "@/public/images/keyboard-keys_4x.d1cec86a.png";
-// import apple from "@/public/images/pngEgg.png";
+import apple from "@/public/images/pngEgg.png";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 const Search = () => {
@@ -14,11 +14,11 @@ const Search = () => {
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
 		offset: ["0 1", "1 1"],
-	});
-	useEffect(() => {
-		// Focus on the input element after the component has mounted
-		console.log(inputRef?.current?.value);
-	}, []);
+	})
+	// useEffect(() => {
+	// 	// Focus on the input element after the component has mounted
+	// 	// console.log(inputRef?.current?.value);W
+	// }, []);
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
 		console.log("Current value:", scrollYProgress.get()); // Log the numeric value

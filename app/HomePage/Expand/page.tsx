@@ -9,7 +9,7 @@ const title = "Expand what's possible";
 const text =
 	"Our Screener lets you quickly sift through thousands of stock data points in seconds, all without the need for a single mouse click.";
 
-const page = () => {
+const Page = () => {
 	return (
 		<section className="px-5 md:px-20 space-y-20">
 			<div>
@@ -32,4 +32,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;
