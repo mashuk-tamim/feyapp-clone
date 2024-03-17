@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 const footerLinks = (
 	<div className="flex gap-3 lg:gap-8 justify-center">
@@ -31,8 +31,8 @@ const footerLinks = (
 	</div>
 );
 
-const Page = () => {
-    return (
+const Footer = () => {
+	return (
 		<footer className="w-full mx-auto text-[#676e75] text-[10px] lg:text-xs font-medium flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-5 lg:px-20 py-10 bg-blueLight">
 			<div>
 				<p>&#169; 2024, Fey Labs Inc.</p>
@@ -42,4 +42,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Footer;

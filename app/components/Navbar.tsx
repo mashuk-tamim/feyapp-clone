@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import LoginButton from "../components/LoginButton/LoginButton";
-import TrailButton from "../components/TrailButton/TrailButton";
+import LoginButton from "./LoginButton";
+import TrailButton from "./TrailButton";
 
 const navLinksLg = (
 	<div className="flex gap-8 text-[#a3a3a5] text-xs">
@@ -40,8 +40,8 @@ const Navbar = () => {
 			<nav className="flex justify-between items-center p-8 md:p-10 lg:py-10 lg:px-14 max-w-6xl mx-auto">
 				<div className="flex justify-between lg:justify-normal items-center gap-10 w-full lg:w-1/2">
 					<div className="flex gap-2 items-center">
-                        <div className="">
-                            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<div className="">
+							{/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinejoin="#868F97" stroke-width="1.5" d="M13.5 12.8053C14.2525 12.3146 14.75 11.4654 14.75 10.5C14.75 8.98122 13.5188 7.75 12 7.75C10.4812 7.75 9.25 8.98122 9.25 10.5C9.25 11.4654 9.74745 12.3146 10.5 12.8053L10.5 14.75C10.5 15.5784 11.1716 16.25 12 16.25C12.8284 16.25 13.5 15.5784 13.5 14.75L13.5 12.8053Z"></path>
                             </svg> */}
 							<svg
@@ -60,7 +60,9 @@ const Navbar = () => {
 							</svg>
 						</div>
 						<div>
-							<h2 className="font-bold text-white flex lg:hidden">FEY</h2>
+							<h2 className="font-bold text-white flex lg:hidden">
+								FEY
+							</h2>
 						</div>
 					</div>
 					<div className="">

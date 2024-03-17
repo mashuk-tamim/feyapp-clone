@@ -1,5 +1,5 @@
 "use client"
-import ComponentTitle from '@/app/components/ComponentTitle/ComponentTitle';
+import ComponentTitle from '@/app/components/ComponentTitle';
 import Image from 'next/image';
 import liveSync from '@/public/images/livesync-on_2x.a6b17784.jpg'
 import React, { useRef } from 'react';

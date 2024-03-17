@@ -1,5 +1,5 @@
 "use client"
-import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
+import ComponentTitle from "@/app/components/ComponentTitle";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import watchList from "@/public/images/watchlist_4x.f3cfae5a.png";

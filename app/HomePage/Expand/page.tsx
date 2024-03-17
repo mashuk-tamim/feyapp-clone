@@ -1,4 +1,4 @@
-import ComponentTitle from "@/app/components/ComponentTitle/ComponentTitle";
+import ComponentTitle from "@/app/components/ComponentTitle";
 import Image from "next/image";
 import React from "react";
 import macPC from "@/public/images/screen-body_4x.1853b79f.png"
