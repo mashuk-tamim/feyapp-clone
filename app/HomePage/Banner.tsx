@@ -226,7 +226,7 @@ export const MacBookScroll = ({
 	const scaleX = useTransform(
 		scrollYProgress,
 		[0, 0.3],
-		[1.25, isMobile ? 1 : 1.25]
+		[1.2, isMobile ? 1 : 1.25]
 	);
 	const scaleY = useTransform(
 		scrollYProgress,
