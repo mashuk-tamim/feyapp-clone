@@ -9,7 +9,7 @@ const Banner = () => {
 					<HeaderText></HeaderText>
 				</div>
 
-				<div>
+				<div className="py-0 my-0">
 					<MacBookScroll></MacBookScroll>
 				</div>
 
@@ -32,7 +32,7 @@ const text =
 export const BottomText = () => {
 	return (
 		<div>
-			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-20"></div>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 "></div>
 			<div className="text-center">
 				<h1 className="text-3xl font-bold">{title}</h1>
 				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
@@ -57,7 +57,7 @@ export const MiddleText = () => {
 			}}
 			className="relative z-0"
 		>
-			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-20"></div>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-20"></div>
 			<div className="text-center">
 				<h1 className="text-3xl font-bold">See the big picture.</h1>
 				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
@@ -152,6 +152,7 @@ import {
 	MotionValue,
 	motion,
 	useInView,
+	useMotionValueEvent,
 	useScroll,
 	useTransform,
 } from "framer-motion";
@@ -181,6 +182,7 @@ import Image from "next/image";
 
 import laptopWallpaper from "@/public/images/screen-1_4x.5ab54123cropped.jpg";
 import bannerStats from "@/public/images/home-UI_4x.d5c9876e.png";
+import bannerStats2 from "@/public/images/bannerStat2.png";
 
 export const MacBookScroll = ({
 	showGradient,
@@ -196,7 +198,8 @@ export const MacBookScroll = ({
 		target: ref,
 		offset: ["0 0", "1 1"],
 	});
-
+	const [replace, setReplace] = useState(false);
+	const [IsNotRounded, setIsNotRounded] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
@@ -205,15 +208,30 @@ export const MacBookScroll = ({
 		}
 	}, []);
 
+	useMotionValueEvent(scrollYProgress, "change", (latest) => {
+		// console.log(scrollYProgress.get()); // Log the numeric value
+		// console.log(replace);
+		if (scrollYProgress.get() === 1) {
+			setReplace(true);
+		} else {
+			setReplace(false);
+		}
+		if (scrollYProgress.get() > 0.48) {
+			setIsNotRounded(true);
+		} else {
+			setIsNotRounded(false);
+		}
+	});
+
 	const scaleX = useTransform(
 		scrollYProgress,
 		[0, 0.3],
-		[1.2, isMobile ? 1 : 1.2]
+		[1.25, isMobile ? 1 : 1.25]
 	);
 	const scaleY = useTransform(
 		scrollYProgress,
 		[0, 0.3],
-		[0.6, isMobile ? 1 : 1.2]
+		[0.6, isMobile ? 1 : 1.25]
 	);
 	const translate = useTransform(scrollYProgress, [0, 1], [0, 800]);
 	const rotate = useTransform(
@@ -225,10 +243,10 @@ export const MacBookScroll = ({
 	return (
 		<div
 			ref={ref}
-			className="md:min-h-[200vh] flex flex-col items-center py-0 md:py-40 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+			className="min-h-[150vh] md:min-h-[200vh] flex flex-col items-center py-0 md:pt-20 md:pb-0 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100 scale-[0.5] sm:scale-50"
 		>
 			{/* Lid */}
-			<div className="relative z-10">
+			<div className={`relative z-10 ${replace ? "hidden" : "flex"}`}>
 				<Lid
 					scaleX={scaleX}
 					scaleY={scaleY}
@@ -262,7 +280,27 @@ export const MacBookScroll = ({
 					<div className="absolute bottom-4 left-4">{badge}</div>
 				)}
 			</div>
-			<MiddleText></MiddleText>
+			<div className="h-[100vh] flex flex-col justify-between items-center">
+				<div>
+					<MiddleText></MiddleText>
+				</div>
+                <motion.div className="" animate={{
+                    opacity: replace ? 1 : 0,
+                    transition: {
+                        duration: 0.2,
+                        ease: "easeInOut",
+                    }
+                }}>
+					<Image
+						src={bannerStats2}
+						alt="Banner statistics 2"
+						className={`h-96 w-[32rem] relative top-36 ${
+							isMobile ? "scale-100" : "scale-y-125 scale-x-125"
+                            } `}
+                    
+					></Image>
+				</motion.div>
+			</div>
 		</div>
 	);
 };
@@ -279,7 +317,7 @@ export const Lid = ({
 	translate: MotionValue<number>;
 }) => {
 	return (
-		<div className="relative [perspective:800px]">
+		<div className="relative flex flex-col [perspective:800px]">
 			<div
 				style={{
 					transform:
