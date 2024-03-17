@@ -2,6 +2,7 @@ import React from "react";
 import HeaderText from "./UpperText";
 import HeaderImage from "./HeaderImage";
 import BottomText from "./BottomText";
+import Demo from "./Demo";
 
 const Header = () => {
 	return (
@@ -11,7 +12,8 @@ const Header = () => {
 					<HeaderText></HeaderText>
 				</div>
 
-				<div>
+                <div>
+                    {/* <Demo></Demo> */}
 					<HeaderImage></HeaderImage>
 				</div>
 

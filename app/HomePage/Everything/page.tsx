@@ -62,7 +62,6 @@ const Page = () => {
 								alt="charts image 2"
 								className="w-4/5 mx-auto h-full"
 							></Image>
-							<div className="bg-gradient-to-l from-black from-[-10%] absolute top-0 h-full w-full object-cover"></div>
 						</div>
 					</div>
 				</motion.div>
@@ -98,7 +97,6 @@ const Page = () => {
 							alt="charts image 2"
 							className="w-4/5 mx-auto h-full flex lg:hidden"
 						></Image>
-						<div className="hidden lg:flex bg-gradient-to-tl from-black from-[-20%] absolute h-full w-full object-cover"></div>
 					</div>
 				</motion.div>
 			</div>
