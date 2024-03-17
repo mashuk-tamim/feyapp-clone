@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ComponentTitle from "@/app/components/ComponentTitle";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -7,24 +7,23 @@ import watchList2 from "@/public/images/macbook-positions_4x.434c9984.png";
 import research from "@/public/images/canvas-mobile_4x.596d91632222.png";
 import Image from "next/image";
 
-
 const title = "Everything, unlike anything.";
 const text =
 	"Whether you're an armchair investor or a Wall Street aficionado, Fey is designed to keep you informed with real-time market data and advanced analysis tools.";
 
-const Page = () => {
+const Everything = () => {
 	const pageRef1 = useRef<HTMLDivElement | null>(null);
 	const pageRef2 = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress: scrollYProgress1 } = useScroll({
 		target: pageRef1,
 		offset: ["center end", "start start"],
-    });
+	});
 	const { scrollYProgress: scrollYProgress2 } = useScroll({
 		target: pageRef2,
 		offset: ["center end", "end start"],
-    });
-    const opacity1 = useTransform(scrollYProgress1, [0, 0.5, 1], [0.3, 1, 0.3])
-    const opacity2 = useTransform(scrollYProgress2, [0, 0.5, 1], [0.3, 1, 0.3])
+	});
+	const opacity1 = useTransform(scrollYProgress1, [0, 0.5, 1], [0.3, 1, 0.3]);
+	const opacity2 = useTransform(scrollYProgress2, [0, 0.5, 1], [0.3, 1, 0.3]);
 	return (
 		<section className="px-5 md:px-20 lg:pl-16">
 			<div className="space-y-20">
@@ -104,4 +103,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Everything;

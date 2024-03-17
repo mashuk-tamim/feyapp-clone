@@ -1,9 +1,142 @@
 "use client";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
+
+const Banner = () => {
+	return (
+		<section className="bg-blueLight w-screen">
+			<div className="max-w-7xl mx-auto">
+				<div>
+					<HeaderText></HeaderText>
+				</div>
+
+				<div>
+					<MacBookScroll></MacBookScroll>
+				</div>
+
+				<div>
+					<BottomText></BottomText>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default Banner;
+
+import Svg from "@/app/components/Svgs/Svg";
+
+const title = "Immerse yourself";
+const text =
+	"Dive into financial, estimates, and more. All meticulously sourced from the titans of the industry, packed within a beautiful interface.";
+
+export const BottomText = () => {
+	return (
+		<div>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-20"></div>
+			<div className="text-center">
+				<h1 className="text-3xl font-bold">{title}</h1>
+				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
+					{text}
+				</p>
+			</div>
+			<Svg></Svg>
+		</div>
+	);
+};
+
+const HeaderText = () => {
+	const heading1Variant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 0,
+				duration: 1,
+			},
+		},
+	};
+	const heading2Variant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 1,
+				duration: 2,
+			},
+		},
+	};
+	const imageVariant = {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				delay: 0.5,
+				duration: 3,
+			},
+		},
+	};
+	return (
+		<div>
+			<div className="flex flex-col justify-center items-center space-y-5 md:w-4/5 lg:w-3/5 mx-auto text-center pt-4">
+				<motion.h3
+					className="uppercase bg-headline-gradient2 lg:inline-block text-transparent bg-clip-text font-semibold hidden text-sm"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
+					Now Available to Everyone
+				</motion.h3>
+				<motion.h3
+					className="uppercase bg-headline-gradient2 inline-block text-transparent bg-clip-text font-semibold md:hidden"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
+					Available Now
+				</motion.h3>
+				<motion.h1
+					className="text-3xl font-bold md:w-[75%]"
+					variants={heading1Variant}
+					animate="visible"
+					initial="hidden"
+				>
+					The definitive research tool for the modern investor.
+				</motion.h1>
+				<motion.h4
+					className="text-gray text-xs font-bold hidden lg:flex items-center"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
+					Press{" "}
+					<span className="bg-[#26272f] font-light text-white px-1 mx-1 py-[1px] rounded-[4px] border border-[#32333a]">
+						T
+					</span>{" "}
+					anytime to start trail
+				</motion.h4>
+				<motion.button
+					className="bg-[#17171b] px-10 py-3 rounded-full font-bold hover:bg-[#1e1e22] flex lg:hidden"
+					variants={heading2Variant}
+					animate="visible"
+					initial="hidden"
+				>
+					Start your free trail
+				</motion.button>
+			</div>
+		</div>
+	);
+};
+
+import { useEffect, useRef, useState } from "react";
 import {
 	MotionValue,
 	motion,
-	useMotionValueEvent,
 	useScroll,
 	useTransform,
 } from "framer-motion";
@@ -31,12 +164,10 @@ import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
 import Image from "next/image";
 
-import bannerLaptop from "@/public/images/macbook_4x.299ca224.jpg";
 import laptopWallpaper from "@/public/images/screen-1_4x.5ab54123cropped.jpg";
 import bannerStats from "@/public/images/home-UI_4x.d5c9876e.png";
-import bannerStats2 from "@/public/images/canvas-UI_4x.0ca19cc7.png";
 
-const MacBookScroll = ({
+export const MacBookScroll = ({
 	showGradient,
 	badge,
 }: {
@@ -50,17 +181,6 @@ const MacBookScroll = ({
 		target: ref,
 		offset: ["0 0", "1 0"],
 	});
-	// useMotionValueEvent(scrollYProgress, "change", (latest) => {
-	// 	console.log(scrollYProgress.get()); // Log the numeric value
-	// 	// console.log(replace);
-	// 	if (scrollYProgress.get() >= 0.5) {
-	// 		setReplace(true);
-	// 		handleStateChange(replace);
-	// 	} else {
-	// 		setReplace(false);
-	// 		handleStateChange(replace);
-	// 	}
-	// });
 
 	const [isMobile, setIsMobile] = useState(false);
 
@@ -86,8 +206,7 @@ const MacBookScroll = ({
 		[0.1, 0.12, 0.3],
 		[-28, -28, 0]
 	);
-	const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
-	const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+	
 	return (
 		<div
 			ref={ref}
@@ -95,7 +214,6 @@ const MacBookScroll = ({
 		>
 			{/* Lid */}
 			<Lid
-				// src={src}
 				scaleX={scaleX}
 				scaleY={scaleY}
 				rotate={rotate}
@@ -131,8 +249,6 @@ const MacBookScroll = ({
 	);
 };
 
-export default MacBookScroll;
-
 export const Lid = ({
 	scaleX,
 	scaleY,
@@ -162,7 +278,6 @@ export const Lid = ({
 					className="absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center"
 				>
 					<span className="text-white">
-						{/* <AceternityLogo /> */}
 						<Image
 							src={laptopWallpaper}
 							alt="wallpaper"
@@ -185,7 +300,7 @@ export const Lid = ({
 				<div className="absolute inset-0 bg-[#272729] rounded-lg" />
 				<Image
 					src={bannerStats}
-					alt="aceternity logo"
+					alt="statistics"
 					fill
 					className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
 				/>
@@ -670,27 +785,6 @@ export const OptionKey = ({ className }: { className: string }) => {
 				width="32"
 				height="32"
 				stroke="none"
-			/>
-		</svg>
-	);
-};
-
-const AceternityLogo = () => {
-	return (
-		<svg
-			width="66"
-			height="65"
-			viewBox="0 0 66 65"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			className="h-3 w-3 text-white"
-		>
-			<path
-				d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-				stroke="currentColor"
-				strokeWidth="15"
-				strokeMiterlimit="3.86874"
-				strokeLinecap="round"
 			/>
 		</svg>
 	);

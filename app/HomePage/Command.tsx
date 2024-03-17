@@ -1,34 +1,28 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import keyboard from "@/public/images/keyboard_4x.fac19d71.jpg";
 import keys from "@/public/images/keyboard-keys_4x.d1cec86a.png";
-import apple from "@/public/images/pngEgg.png";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
-const Page = () => {
+const Command = () => {
 	const [prevValue, setPrevValue] = useState(0);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
-	// const searchRef = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
 		offset: ["0 1", "1 1"],
-	})
-	// useEffect(() => {
-	// 	// Focus on the input element after the component has mounted
-	// 	// console.log(inputRef?.current?.value);W
-	// }, []);
+	});
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
-		console.log("Current value:", scrollYProgress.get()); // Log the numeric value
 		setPrevValue(latest);
-		console.log("Previous value:", prevValue);
-		if (inputRef.current && latest >= 0 && latest <= 1) {
+		// console.log("Current value:", scrollYProgress.get()); // Log the numeric value
+		// console.log("Previous value:", prevValue);
+		// if (inputRef.current && latest >= 0 && latest <= 1) {
 			// const length = inputRef.current.value.length;
 			// inputRef.current.focus();
 			// inputRef.current.setSelectionRange(length, length);
-		}
+		// }
 		if (inputRef.current) {
 			if (latest > 0.4 && latest <= 0.47) {
 				inputRef.current.value = "";
@@ -39,7 +33,7 @@ const Page = () => {
 				inputRef.current.value = "s";
 			} else if (latest > 0.55 && latest < 0.63) {
 				inputRef.current.value = "se";
-			} else if (latest > 0.63 && latest < 0.70) {
+			} else if (latest > 0.63 && latest < 0.7) {
 				inputRef.current.value = "sea";
 			} else if (latest > 0.7 && latest < 0.77) {
 				inputRef.current.value = "sear";
@@ -47,10 +41,9 @@ const Page = () => {
 				inputRef.current.value = "searc";
 			} else if (latest > 0.4 && latest <= 1) {
 				inputRef.current.value = "search";
-            }
-            else {
-                inputRef.current.value = "";
-            }
+			} else {
+				inputRef.current.value = "";
+			}
 		}
 	});
 
@@ -88,11 +81,6 @@ const Page = () => {
 						<div className="w-[350px] md:w-[300px] lg:w-[400px] h-[300px] md:h-[280px] lg:h-[350px] bg-black relative top-0 left-20 md:left-[408px] lg:left-[680px] overflow-hidden drop-shadow-xl shadow-2xl shadow-black">
 							<div className="p-7 border-b border-[#202020] space-y-4">
 								<div className="flex items-center gap-1">
-									{/* <Image
-										src={apple}
-										alt=""
-										className="size-4 border-[#000000] rounded-md p-1"
-									></Image> */}
 									<div className="text-gray text-[6px] font-bold bg-[#1a1b20] rounded-sm">
 										AAPL:
 										<span className="font-medium">
@@ -118,4 +106,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Command;

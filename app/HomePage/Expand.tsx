@@ -1,15 +1,15 @@
 import ComponentTitle from "@/app/components/ComponentTitle";
 import Image from "next/image";
 import React from "react";
-import macPC from "@/public/images/screen-body_4x.1853b79f.png"
-import macNav from "@/public/images/screen-nav_4x.e6686092.png"
-import stockScreener from "@/public/images/screener_4x.83818e76.jpeg"
+import macPC from "@/public/images/screen-body_4x.1853b79f.png";
+import macNav from "@/public/images/screen-nav_4x.e6686092.png";
+import stockScreener from "@/public/images/screener_4x.83818e76.jpeg";
 
 const title = "Expand what's possible";
 const text =
 	"Our Screener lets you quickly sift through thousands of stock data points in seconds, all without the need for a single mouse click.";
 
-const Page = () => {
+const Expand = () => {
 	return (
 		<section className="px-5 md:px-20 space-y-20">
 			<div>
@@ -32,4 +32,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Expand;

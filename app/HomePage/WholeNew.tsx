@@ -1,16 +1,15 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import macClosedOff from "@/public/images/laptop-closed-off_4x.434654c4-PhotoRoom.png";
 import macClosedOn from "@/public/images/laptop-closed-on_4x.06eb6128.jpg";
 import macLogoNotHovered from "@/public/images/apple-unhovered_4x.f4daffa8.png";
 import macLogoHovered from "@/public/images/apple-hovered_4x.981e3b1f.png";
-const Page = () => {
+const WholeNew = () => {
 	const [isHovered, setIsHovered] = useState(false);
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: false });
-	// console.log(isInView);
 
 	const handleMouseEnter = () => {
 		setIsHovered(true);
@@ -82,4 +81,4 @@ const Page = () => {
 		</section>
 	);
 };
-export default Page;
+export default WholeNew;
