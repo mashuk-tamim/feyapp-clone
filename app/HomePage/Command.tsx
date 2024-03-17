@@ -3,10 +3,16 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import keyboard from "@/public/images/keyboard_4x.fac19d71.jpg";
 import keys from "@/public/images/keyboard-keys_4x.d1cec86a.png";
+import search1 from "@/public/images/Screenshot 2024-03-18 030052.png";
+import search2 from "@/public/images/Screenshot 2024-03-18 030239.png";
+import search3 from "@/public/images/Screenshot 2024-03-18 030359.png";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 const Command = () => {
 	const [prevValue, setPrevValue] = useState(0);
+	const [firstSearch, setFirstSearch] = useState(true);
+	const [secondSearch, setSecondSearch] = useState(false);
+	const [thirdSearch, setThirdSearch] = useState(false);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress } = useScroll({
@@ -19,9 +25,9 @@ const Command = () => {
 		// console.log("Current value:", scrollYProgress.get()); // Log the numeric value
 		// console.log("Previous value:", prevValue);
 		// if (inputRef.current && latest >= 0 && latest <= 1) {
-			// const length = inputRef.current.value.length;
-			// inputRef.current.focus();
-			// inputRef.current.setSelectionRange(length, length);
+		// const length = inputRef.current.value.length;
+		// inputRef.current.focus();
+		// inputRef.current.setSelectionRange(length, length);
 		// }
 		if (inputRef.current) {
 			if (latest > 0.4 && latest <= 0.47) {
@@ -29,18 +35,32 @@ const Command = () => {
 				const length = inputRef.current.value.length;
 				inputRef.current.focus();
 				inputRef.current.setSelectionRange(length, length);
+				setFirstSearch(true);
+				setSecondSearch(false);
+				setThirdSearch(false);
 			} else if (latest > 0.47 && latest < 0.55) {
-				inputRef.current.value = "s";
+                inputRef.current.value = "s";
+                
 			} else if (latest > 0.55 && latest < 0.63) {
 				inputRef.current.value = "se";
+				setFirstSearch(false);
+                setSecondSearch(true);
+                setThirdSearch(false);
 			} else if (latest > 0.63 && latest < 0.7) {
 				inputRef.current.value = "sea";
 			} else if (latest > 0.7 && latest < 0.77) {
-				inputRef.current.value = "sear";
+                inputRef.current.value = "sear";
+                setSecondSearch(true);
+                setThirdSearch(false);
 			} else if (latest > 0.77 && latest < 0.84) {
 				inputRef.current.value = "searc";
+                setSecondSearch(true);
+                setThirdSearch(false);
 			} else if (latest > 0.4 && latest <= 1) {
-				inputRef.current.value = "search";
+                inputRef.current.value = "search";
+                setThirdSearch(true);
+                setSecondSearch(false);
+                setFirstSearch(false);
 			} else {
 				inputRef.current.value = "";
 			}
@@ -96,6 +116,42 @@ const Command = () => {
 										className="bg-black caret-[#479ffa] focus:outline-none text-base font-medium placeholder:font-thin"
 										defaultValue=""
 									/>
+								</div>
+							</div>
+							<div>
+								<div>
+									<Image
+										src={search1}
+										alt=""
+										className={`${
+											firstSearch ? "flex" : "hidden"
+										}`}
+									></Image>
+								</div>
+								<motion.div
+									animate={{
+										scale: [1, 0.5, 1],
+										transition: {
+											duration: 1,
+										},
+									}}
+								>
+									<Image
+										src={search2}
+										alt=""
+										className={`${
+											secondSearch ? "flex" : "hidden"
+										}`}
+									></Image>
+								</motion.div>
+								<div>
+									<Image
+										src={search3}
+										alt=""
+										className={`${
+											thirdSearch ? "flex" : "hidden"
+										}`}
+									></Image>
 								</div>
 							</div>
 						</div>
