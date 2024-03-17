@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Svg = () => {
+const Logos = () => {
     return (
 		<div>
 			<div className="flex justify-center items-center gap-5 md:gap-8 lg:gap-10 mt-10">
@@ -123,4 +123,4 @@ const Svg = () => {
 	);
 };
 
-export default Svg;
+export default Logos;

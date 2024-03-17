@@ -23,7 +23,7 @@ const Banner = () => {
 
 export default Banner;
 
-import Svg from "@/app/components/Svgs/Svg";
+import Logos from "@/app/components/Logos";
 
 const title = "Immerse yourself";
 const text =
@@ -39,7 +39,33 @@ export const BottomText = () => {
 					{text}
 				</p>
 			</div>
-			<Svg></Svg>
+			<Logos></Logos>
+		</div>
+	);
+};
+
+export const MiddleText = () => {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: false });
+	return (
+		<div
+			ref={ref}
+			style={{
+				opacity: isInView ? "1" : "0",
+				transition: "ease-in-out 1s",
+				transitionDelay: "0.5s",
+			}}
+			className="relative z-0"
+		>
+			<div className="w-[320px] md:w-[500px] lg:w-[680px] mx-auto pt-5 md:pt-20"></div>
+			<div className="text-center">
+				<h1 className="text-3xl font-bold">See the big picture.</h1>
+				<p className="w-[60%] mx-auto text-gray text-sm font-medium mt-7">
+					Fey offers a streamlined view of real-time market data,
+					effortlessly giving you the big picture on your favorite
+					companies.
+				</p>
+			</div>
 		</div>
 	);
 };
@@ -66,18 +92,6 @@ const HeaderText = () => {
 			transition: {
 				delay: 1,
 				duration: 2,
-			},
-		},
-	};
-	const imageVariant = {
-		hidden: {
-			opacity: 0,
-		},
-		visible: {
-			opacity: 1,
-			transition: {
-				delay: 0.5,
-				duration: 3,
 			},
 		},
 	};
@@ -137,6 +151,7 @@ import { useEffect, useRef, useState } from "react";
 import {
 	MotionValue,
 	motion,
+	useInView,
 	useScroll,
 	useTransform,
 } from "framer-motion";
@@ -179,7 +194,7 @@ export const MacBookScroll = ({
 	const ref = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,
-		offset: ["0 0", "1 0"],
+		offset: ["0 0", "1 1"],
 	});
 
 	const [isMobile, setIsMobile] = useState(false);
@@ -200,25 +215,27 @@ export const MacBookScroll = ({
 		[0, 0.3],
 		[0.6, isMobile ? 1 : 1.2]
 	);
-	const translate = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+	const translate = useTransform(scrollYProgress, [0, 1], [0, 800]);
 	const rotate = useTransform(
 		scrollYProgress,
 		[0.1, 0.12, 0.3],
 		[-28, -28, 0]
 	);
-	
+
 	return (
 		<div
 			ref={ref}
 			className="md:min-h-[200vh] flex flex-col items-center py-0 md:py-40 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
 		>
 			{/* Lid */}
-			<Lid
-				scaleX={scaleX}
-				scaleY={scaleY}
-				rotate={rotate}
-				translate={translate}
-			/>
+			<div className="relative z-10">
+				<Lid
+					scaleX={scaleX}
+					scaleY={scaleY}
+					rotate={rotate}
+					translate={translate}
+				/>
+			</div>
 			{/* Base area */}
 			<div className="h-[22rem] w-[32rem] bg-gray-200 bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
 				{/* above keyboard bar */}
@@ -245,6 +262,7 @@ export const MacBookScroll = ({
 					<div className="absolute bottom-4 left-4">{badge}</div>
 				)}
 			</div>
+			<MiddleText></MiddleText>
 		</div>
 	);
 };
