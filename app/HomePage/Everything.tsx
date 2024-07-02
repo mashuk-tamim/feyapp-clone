@@ -25,7 +25,7 @@ const Everything = () => {
 	const opacity1 = useTransform(scrollYProgress1, [0, 0.5, 1], [0.3, 1, 0.3]);
 	const opacity2 = useTransform(scrollYProgress2, [0, 0.5, 1], [0.3, 1, 0.3]);
 	return (
-		<section className="px-5 md:px-20 lg:pl-16">
+		<section className="px-5 md:px-20 lg:pl-16 max-w-7xl mx-auto">
 			<div className="space-y-20">
 				<div className="">
 					<ComponentTitle title={title} text={text}></ComponentTitle>
@@ -41,13 +41,10 @@ const Everything = () => {
 							}}
 						>
 							<p className="text-gray font-bold p-10 lg:sticky lg:top-[35%]">
-								<span className="text-white">
-									Track your stocks
-								</span>{" "}
-								and scout for potential investment
-								opportunities. Our advanced watch list
-								effortlessly keeps you updated with earnings
-								dates and performance indicators.
+								<span className="text-white">Track your stocks</span> and scout
+								for potential investment opportunities. Our advanced watch list
+								effortlessly keeps you updated with earnings dates and
+								performance indicators.
 							</p>
 						</motion.div>
 						<div className="w-full lg:w-[60%] lg:relative">
@@ -74,22 +71,18 @@ const Everything = () => {
 						}}
 					>
 						<p className="text-gray font-bold p-10 lg:sticky lg:top-[35%]">
-							<span className="text-white">Research</span> is all
-							about quality of data and accuracy. Unlike most
-							financial apps, our asset pages are carefully
-							curated to remove the noise, while still giving you
-							access to rich market intelligence from a single
-							keypress. <br />
-							<span className="text-blue underline font-bold">
-								Learn more
-							</span>
+							<span className="text-white">Research</span> is all about quality
+							of data and accuracy. Unlike most financial apps, our asset pages
+							are carefully curated to remove the noise, while still giving you
+							access to rich market intelligence from a single keypress. <br />
+							<span className="text-blue underline font-bold">Learn more</span>
 						</p>
 					</motion.div>
 					<div className="w-full lg:w-[60%] lg:relative space-y-10">
 						<Image
 							src={research}
 							alt="charts image"
-							className="static lg:absolute lg:object-cover lg:object-left w-4/5 mx-auto lg:w-full h-full round"
+							className="static lg:absolute lg:object-cover lg:object-left w-4/5 mx-auto lg:w-full round"
 						></Image>
 						<Image
 							src={watchList2}

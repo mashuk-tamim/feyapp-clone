@@ -33,7 +33,7 @@ const footerLinks = (
 
 const Footer = () => {
 	return (
-		<footer className="w-full mx-auto text-[#676e75] text-[10px] lg:text-xs font-medium flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-5 lg:px-20 py-10 bg-blueLight">
+		<footer className="max-w-7xl mx-auto text-[#676e75] text-[10px] lg:text-xs font-medium flex flex-col-reverse items-center gap-5 md:flex-row justify-between px-5 lg:px-20 py-10 bg-blueLight">
 			<div>
 				<p>&#169; 2024, Fey Labs Inc.</p>
 			</div>

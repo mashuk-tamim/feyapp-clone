@@ -19,8 +19,8 @@ export default function Home() {
 		requestAnimationFrame(raf);
 	}, []);
 	return (
-        <main className="space-y-20">
-            <Banner></Banner>
+		<main className="space-y-20">
+			<Banner></Banner>
 			<Command></Command>
 			<Everything></Everything>
 			<Expand></Expand>

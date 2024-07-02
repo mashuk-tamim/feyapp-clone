@@ -18,7 +18,7 @@ const WholeNew = () => {
 		setIsHovered(false);
 	};
 	return (
-		<section className="bg-blueLight pt-40">
+		<section className="bg-blueLight pt-40 max-w-7xl mx-auto">
 			<div className="flex flex-col items-center justify-center">
 				<h2 className="text-3xl font-bold bg-headline-gradient text-transparent bg-clip-text inline-block">
 					A whole new
@@ -49,16 +49,12 @@ const WholeNew = () => {
 				</motion.button>
 			</div>
 			<div ref={ref} className="relative mt-32 w-[80%] mx-auto">
-				<Image
-					src={macClosedOff}
-					alt="mac closed"
-					className="border"
-				></Image>
-				<Image
+				<Image src={macClosedOff} alt="mac closed" className="w-full"></Image>
+				{/* <Image
 					src={macLogoNotHovered}
-					alt="not hovered mac"
+					alt="mac opened"
 					className="absolute top-0 left-0 z-10"
-				></Image>
+				></Image> */}
 				<Image
 					src={macLogoHovered}
 					alt="hovered mac"
@@ -76,7 +72,6 @@ const WholeNew = () => {
 						transitionDelay: "0.5s",
 					}}
 				></Image>
-				<div></div>
 			</div>
 		</section>
 	);

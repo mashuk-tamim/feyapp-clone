@@ -11,7 +11,7 @@ const text =
 
 const Expand = () => {
 	return (
-		<section className="px-5 md:px-20 space-y-20">
+		<section className="px-5 md:px-20 space-y-20 max-w-7xl mx-auto">
 			<div>
 				<ComponentTitle title={title} text={text} />
 			</div>

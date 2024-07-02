@@ -16,7 +16,7 @@ const RealTime = () => {
 	});
 	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 	return (
-		<section className="px-5 md:px-0">
+		<section className="px-5 md:px-0 max-w-7xl mx-auto">
 			<div>
 				<ComponentTitle title={title} text={text}></ComponentTitle>
 			</div>

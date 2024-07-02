@@ -68,7 +68,7 @@ const Command = () => {
 	});
 
 	return (
-		<div className="h-[200vh] ">
+		<div className="h-[200vh] max-w-7xl mx-auto">
 			<motion.div ref={containerRef} className="h-full">
 				<div></div>
 				<div className="sticky top-0 p-5 md:p-24 space-y-6 md:space-y-32 bg-[#0e0e13] overflow-hidden">
@@ -78,10 +78,9 @@ const Command = () => {
 								Always at your command.
 							</h2>
 							<p className="text-gray font-bold w-full md:w-[90%] lg:w-[45%] mt-5 md:mt-0">
-								The Fey Command lets you have full control at
-								your fingertips. Manage your portfolio, view
-								transactions and execute real-time orders in
-								seconds, all without ever touching your mouse.
+								The Fey Command lets you have full control at your fingertips.
+								Manage your portfolio, view transactions and execute real-time
+								orders in seconds, all without ever touching your mouse.
 							</p>
 						</div>
 					</div>
@@ -103,9 +102,7 @@ const Command = () => {
 								<div className="flex items-center gap-1">
 									<div className="text-gray text-[6px] font-bold bg-[#1a1b20] rounded-sm">
 										AAPL:
-										<span className="font-medium">
-											NASDAQ
-										</span>
+										<span className="font-medium">NASDAQ</span>
 									</div>
 								</div>
 								<div className="">
@@ -123,9 +120,7 @@ const Command = () => {
 									<Image
 										src={search1}
 										alt=""
-										className={`${
-											firstSearch ? "flex" : "hidden"
-										}`}
+										className={`${firstSearch ? "flex" : "hidden"}`}
 									></Image>
 								</div>
 								<motion.div
@@ -139,18 +134,14 @@ const Command = () => {
 									<Image
 										src={search2}
 										alt=""
-										className={`${
-											secondSearch ? "flex" : "hidden"
-										}`}
+										className={`${secondSearch ? "flex" : "hidden"}`}
 									></Image>
 								</motion.div>
 								<div>
 									<Image
 										src={search3}
 										alt=""
-										className={`${
-											thirdSearch ? "flex" : "hidden"
-										}`}
+										className={`${thirdSearch ? "flex" : "hidden"}`}
 									></Image>
 								</div>
 							</div>
